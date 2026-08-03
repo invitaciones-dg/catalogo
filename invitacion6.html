@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Elena & Martín - Boho Chic</title>
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #c17a69; /* Terracota suave */
+            --accent: #e3c1b4; /* Beige rosado */
+            --text-dark: #5e4b46;
+            --text-light: #fffaf5;
+            --bg-body: #fdf6f0;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Contenedor Principal tipo Revista */
+        .invitation-wrapper {
+            background: var(--text-light);
+            width: 100%;
+            max-width: 900px;
+            min-height: 600px;
+            display: flex;
+            box-shadow: 0 15px 40px rgba(94, 75, 70, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Columna Izquierda (Imagen de Fondo y Nombres) */
+        .col-left {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1522673607220-0c4c98d86d16?q=80&w=800&auto=format&fit=crop') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            color: var(--text-light);
+        }
+
+        .col-left::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        }
+
+        .hero-names {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-names h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .hero-names .amp {
+            font-size: 2rem;
+            opacity: 0.8;
+            display: block;
+            margin: 5px 0;
+        }
+
+        /* Columna Derecha (Contenido) */
+        .col-right {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2.section-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .info-block {
+            margin-bottom: 25px;
+        }
+
+        .info-block p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #7c6b65;
+        }
+
+        /* Sección Nuestra Historia */
+        .story-text {
+            font-style: italic;
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        /* Detalles del Evento (Iconos) */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .detail-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .detail-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .detail-desc {
+            font-size: 0.8rem;
+            color: #7c6b65;
+        }
+
+        /* Galería de Fotos (Simulada) */
+        .gallery-section {
+            margin-top: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 80px;
+            background-color: var(--accent);
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        /* Botón de Acción */
+        .action-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-boho {
+            background-color: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 40px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(193, 122, 105, 0.3);
+        }
+
+        .btn-boho:hover {
+            background-color: #a96a5a;
+            transform: translateY(-2px);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .invitation-wrapper {
+                flex-direction: column;
+            }
+            .col-left {
+                min-height: 250px;
+                padding: 30px;
+            }
+            .col-right {
+                padding: 30px;
+            }
+            .hero-names h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-wrapper">
+        <!-- Columna Izquierda: Foto y Nombres -->
+        <div class="col-left">
+            <div class="hero-names">
+                <h1>Elena</h1>
+                <span class="amp">&</span>
+                <h1>Martín</h1>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Detalles -->
+        <div class="col-right">
+            
+            <div class="info-block">
+                <h2 class="section-title">Nuestra Historia</h2>
+                <p class="story-text">"Un café que se convirtió en cena, una charla que duró años... así empezó nuestra aventura."</p>
+                <p>Nos casamos y queremos que seas parte de este nuevo capítulo.</p>
+            </div>
+
+            <div class="details-grid">
+                <!-- Fecha -->
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/></svg>
+                    <div>
+                        <div class="detail-title">Cuándo</div>
+                        <div class="detail-desc">dia, fecha, mes, año<br>Ceremonia:  Hrs</div>
+                    </div>
+                </div>
+                
+                <!-- Lugar -->
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                    <div>
+                        <div class="detail-title">Dónde</div>
+                        <div class="detail-desc">Nombre del lugar<br>ubicacion</div>
+                    </div>
+                </div>
+
+                <!-- Dress Code -->
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24"><path d="M21.5 9.5c0 1.97-1.53 3.62-3.49 3.88l-2.32 7.07c-.11.35-.43.59-.79.59H9.1c-.37 0-.68-.24-.79-.59L6 13.38A3.993 3.993 0 0 1 2.5 9.5C2.5 7.29 4.29 5.5 6.5 5.5c1.66 0 3.08 1.01 3.69 2.45C10.84 6.51 12.27 5.5 13.93 5.5c2.21 0 4 1.79 4 4zM10 10l.46 1.41L12 12l-1.54.59L10 14l-.46-1.41L8 12l1.54-.59L10 10z"/></svg>
+                    <div>
+                        <div class="detail-title">Código de Vestimenta</div>
+                        <div class="detail-desc">como quieren que vayan vestidos<br>Colores  sugeridos</div>
+                    </div>
+                </div>
+
+                <!-- Confirmar -->
+                <div class="detail-item">
+                    <svg class="detail-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <div>
+                        <div class="detail-title">Confirmación</div>
+                        <div class="detail-desc">antes de tal fecha</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería de Fotos Inspiracionales -->
+            <div class="gallery-section">
+                <div class="detail-title">Inspiración para el día(muestra de como sera el evento)</div>
+                <div class="gallery-grid">
+                    <img src="https://images.unsplash.com/photo-1567755428025-05d1f3d35c2f?q=80&w=200" alt="Boda inspiración 1" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1587309843031-1c648a0aa347?q=80&w=200" alt="Boda inspiración 2" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1606832392136-ed9d0292409f?q=80&w=200" alt="Boda inspiración 3" class="gallery-img">
+                </div>
+            </div>
+
+            <!-- Botón Confirmar -->
+            <div class="action-container">
+                <a href="#" class="btn-boho" onclick="confirmarAsistencia(); return false;">Confirmar Asistencia</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Función de confirmación vía WhatsApp al número 833 255 5301
+        function confirmarAsistencia() {
+            const telefono = "5218332555301"; // Mantengo el número solicitado
+            const mensaje = encodeURIComponent("¡Hola! Elena y Martín, confirmo con mucho gusto mi asistencia a su boda. ¡Allí estaremos!");
+            window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

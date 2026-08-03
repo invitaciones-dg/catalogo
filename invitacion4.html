@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Lujo - Victoria & Alejandro</title>
+    <!-- Fuentes elegantes de Google Fonts para estilo alta gama -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #141414;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 520px;
+            padding: 50px 35px;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            border: 1px solid var(--border-gold);
+            position: relative;
+        }
+
+        /* Marco interior fino dorado */
+        .invitation-card::after {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            pointer-events: none;
+        }
+
+        .tag-top {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .names {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--gold-light);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .names span {
+            font-style: italic;
+            font-weight: 400;
+            font-size: 2rem;
+            display: block;
+            color: var(--gold);
+            margin: 8px 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 25px 0;
+            font-style: italic;
+        }
+
+        /* Bloque de fecha de alta gama */
+        .date-box {
+            border-top: 1px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
+            padding: 20px 0;
+            margin: 25px 0;
+        }
+
+        .date-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .date-box p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Secciones de detalles exclusivos (Grid de 2) */
+        .luxury-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .luxury-item {
+            background-color: rgba(255, 255, 255, 0.02);
+            padding: 15px;
+            border-left: 2px solid var(--gold);
+        }
+
+        .luxury-item h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .luxury-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Sección de Pase Exclusivo */
+        .pass-section {
+            background: linear-gradient(135deg, rgba(212,175,55,0.05), transparent);
+            border: 1px dashed var(--border-gold);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 25px 0;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+        }
+
+        /* Botón de Lujo */
+        .btn-luxury {
+            background: linear-gradient(135deg, #d4af37, #aa8c2c);
+            color: #0d0d0d;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            margin-top: 25px;
+        }
+
+        .btn-luxury:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="tag-top">Boda de Gala</div>
+        
+        <div class="names">
+            Victoria
+            <span>&</span>
+            Alejandro
+        </div>
+
+        <p class="intro-text">
+            "Hay momentos en la vida que son inolvidables, compartirlos con quienes amamos los hace eternos."
+        </p>
+
+        <!-- Fecha -->
+        <div class="date-box">
+            <h3>SÁBADO, 19 DE DICIEMBRE DE 2026</h3>
+            <p>Ceremonia a las 19:00 horas</p>
+        </div>
+
+        <!-- Detalles de Lujo (Ubicación y Dress Code) -->
+        <div class="luxury-grid">
+            <div class="luxury-item">
+                <h4>Ceremonia & Recepción</h4>
+                <p>ubicación del evento</p>
+            </div>
+            <div class="luxury-item">
+                <h4>Codigo de Vestimenta</h4>
+                <p>Rigurosa Etiqueta <br>(Mujeres: Vestido largo de noche / Hombres: Esquin / Traje oscuro)</p>
+            </div>
+        </div>
+
+
+        <!-- Pase Personalizado -->
+        <div class="pass-section">
+            Pase Válido para: <strong>2 Adultos</strong><br>
+            <span style="font-size: 0.7rem; color: var(--text-muted);">Su lugar ha sido reservado especialmente.</span>
+        </div>
+
+        <!-- Botón Confirmación -->
+        <a href="#" class="btn-luxury" onclick="confirmarAsistencia(); return false;">Confirmar Asistencia</a>
+    </div>
+
+    <script>
+        // Función de confirmación vía WhatsApp al número 833 255 5301
+        function confirmarAsistencia() {
+            const telefono = "5218332555301";
+            const mensaje = encodeURIComponent("¡Estimados Victoria y Alejandro! Confirmo mi asistencia con mucho entusiasmo a su enlace de gala. ¡Allí nos veremos!");
+            window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
