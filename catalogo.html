@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Invitaciones</title>
+    <!-- Fuentes elegantes -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f4f6f4;
+            font-family: 'Montserrat', sans-serif;
+            color: #4a5d4e;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #3b4a3e;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1rem;
+            color: #5c6e60;
+            margin-top: 10px;
+        }
+
+        /* Contenedor de la cuadrícula de invitaciones */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Tarjeta individual del catálogo */
+        .invitation-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #dcdedc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .invitation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .invitation-card h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: #3b4a3e;
+            margin: 0 0 10px 0;
+        }
+
+        .invitation-card p {
+            font-size: 0.85rem;
+            color: #6c7e6e;
+            margin-bottom: 20px;
+        }
+
+        /* Botón para mostrar la invitación */
+        .btn-show {
+            background-color: #5b705e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-show:hover {
+            background-color: #4a5d4e;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nuestro Catálogo de Bodas</h1>
+        <p>Selecciona una invitación para visualizarla</p>
+    </header>
+
+    <div class="catalog-grid">
+        <!-- Invitación 1 -->
+        <div class="invitation-card">
+            <h3>Emilia & Sergio</h3>
+            <p>Estilo Clásico Eucalipto (26 Sep 2026)</p>
+            <a href="invitacion1.html" class="btn-show">Mostrar invitación</a>
+        </div>
+
+        <!-- Invitación 2 -->
+        <div class="invitation-card">
+            <h3>Sofía & Alejandro</h3>
+            <p>Estilo Minimalista Moderno</p>
+            <a href="invitacion2.html" class="btn-show">Mostrar invitación</a>
+        </div>
+
+        <!-- Invitación 3 -->
+        <div class="invitation-card">
+            <h3>Lucía & Mateo</h3>
+            <p>Estilo Botánico Rústico</p>
+            <a href="invitacion3.html" class="btn-show">Mostrar invitación</a>
+        </div>
+
+        <!-- Invitación 4 -->
+        <div class="invitation-card">
+            <h3>Valeria & Diego</h3>
+            <p>Estilo Floral Elegante</p>
+            <a href="invitacion4.html" class="btn-show">Mostrar invitación</a>
+        </div>
+
+        <!-- Invitación 5 -->
+        <div class="invitation-card">
+            <h3>Mariana & Carlos</h3>
+            <p>Estilo Romántico Vintage</p>
+            <a href="invitacion5.html" class="btn-show">Mostrar invitación</a>
+        </div>
+
+        <!-- Invitación 6 -->
+        <div class="invitation-card">
+            <h3>Valentina & Andrés</h3>
+            <p>Estilo Campestre Chic</p>
+            <a href="invitacion6.html" class="btn-show">Mostrar invitación</a>
+        </div>
+    </div>
+
+</body>
+</html>
