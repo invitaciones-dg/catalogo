@@ -3,439 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Elena y Javier</title>
+    <title>Invitación de Boda - Ana & Miguel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
         :root {
-            --color-dorado: #b89450;
-            --color-verde: #3d5e47;
-            --color-fondo: #fcfbf9;
-            --color-texto: #2c2c2c;
+            --primary-color: #d4af37;
+            --secondary-color: #f8f3e9;
+            --text-color: #333;
+            --accent-color: #9c7e31;
+            --light-accent: #f0e6d2;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f2efe9;
-            color: var(--color-texto);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: #f9f5f0;
+            background-image: url('https://picsum.photos/seed/wedding-background/1600/1200.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 20px;
         }
-
-        .invitacion {
-            background-color: var(--color-fondo);
-            /* Simulación de textura de papel elegante con SVG */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 100 100'%3E%3Cpath d='M10,90 Q30,60 50,90 T90,90' fill='none' stroke='%23b89450' stroke-width='0.4' opacity='0.3'/%3E%3C/svg%3E");
-            
-            width: 100%;
-            max-width: 500px;
-            padding: 40px 25px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        
+        .invitation-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 40px auto;
             position: relative;
-            border-radius: 4px;
+            max-width: 800px;
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
-
-        /* Esquinas decorativas florales idénticas a la referencia */
-        .decoracion-esquina-izq, .decoracion-esquina-der {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            pointer-events: none;
-            opacity: 0.85;
-            z-index: 3;
-        }
-
-        .decoracion-esquina-izq {
-            bottom: 10px;
-            left: 10px;
-            transform: scaleX(-1);
-        }
-
-        .decoracion-esquina-der {
-            bottom: 10px;
-            right: 10px;
-        }
-
-        /* Contenedor de la foto con el marco circular exacto */
-        .foto-container {
-            position: relative;
-            width: 270px;
-            height: 270px;
-            margin: 10px auto 25px auto;
-        }
-
-        .foto-circulo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            position: absolute;
-            top: 35px;
-            left: 35px;
-            z-index: 2;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-
-        .marco-ilustracion {
+        
+        .header::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 4;
-            pointer-events: none;
-        }
-
-        /* Textos de la invitación */
-        .texto-nuestra-boda {
-            font-size: 0.95rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .nombres {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.2rem;
-            color: var(--color-texto);
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
-
-        .frase-especial {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 25px;
-            position: relative;
-            font-style: italic;
+            background-image: url('https://picsum.photos/seed/floral-pattern/1200/300.jpg');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
         }
         
-        .frase-especial::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 1px;
-            background-color: var(--color-dorado);
-            margin: 12px auto 0 auto;
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
-
-        .fecha-hora-box {
-            margin-bottom: 25px;
+        
+        .ornament {
+            font-size: 24px;
+            color: white;
+            margin: 15px 0;
+            letter-spacing: 3px;
         }
-
-        .fecha-hora {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--color-texto);
+        
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 60px;
+            color: white;
+            margin: 10px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
         }
-
-        .hora {
-            font-size: 1.15rem;
-            color: #555;
-            letter-spacing: 1px;
+        
+        .subtitle {
+            font-size: 24px;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
-
-        /* --- NUEVO: Cuenta regresiva interactiva --- */
-        .cuenta-regresiva {
+        
+        .names {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .tiempo-item {
-            background: white;
-            border: 1px solid rgba(184, 148, 80, 0.3);
-            padding: 8px 12px;
-            border-radius: 8px;
-            min-width: 60px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .tiempo-numero {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--color-dorado);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .tiempo-etiqueta {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: #777;
-        }
-
-        /* Iconos interactivos inferiores */
-        .iconos-container {
-            display: flex;
-            justify-content: space-around;
-            gap: 10px;
-            margin-top: 10px;
-            position: relative;
-            z-index: 5;
-        }
-
-        .icono-item {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            text-decoration: none;
-            color: var(--color-texto);
-            width: 100px;
-            transition: all 0.3s ease;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
         
-        .icono-item:hover {
+        .name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: var(--primary-color);
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .and {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            color: var(--accent-color);
+            margin: 0 10px;
+        }
+        
+        .invitation-text {
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: var(--secondary-color);
+        }
+        
+        .detail-box {
+            flex: 1 1 300px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .detail-box:hover {
             transform: translateY(-5px);
         }
-
-        .icono-circulo {
-            width: 65px;
-            height: 65px;
-            border: 2px solid var(--color-dorado);
-            border-radius: 50%;
+        
+        .detail-icon {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .detail-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .detail-info {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .countdown {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light-accent);
+        }
+        
+        .countdown-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .countdown-timer {
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin-bottom: 8px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
             background-color: white;
-            box-shadow: 0 4px 10px rgba(184, 148, 80, 0.15);
-            transition: background-color 0.3s;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 80px;
         }
-
-        .icono-item:hover .icono-circulo {
-            background-color: #fbf5e6;
+        
+        .countdown-number {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
         }
-
-        .icono-svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--color-dorado);
+        
+        .countdown-label {
+            font-size: 14px;
+            color: var(--text-color);
         }
-
-        .icono-texto {
-            font-size: 0.8rem;
-            line-height: 1.2;
-            font-weight: 500;
-            color: #444;
+        
+        .gallery {
+            padding: 30px;
+            text-align: center;
         }
-
-        /* Reproductor de música flotante interactivo */
-        .musica-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--color-dorado);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 18px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-size: 0.85rem;
+        
+        .gallery-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .gallery-images {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 100;
-            transition: transform 0.2s;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
-
-        .musica-btn:hover {
+        
+        .gallery-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover {
             transform: scale(1.05);
         }
+        
+        .rsvp {
+            padding: 30px;
+            text-align: center;
+            background-color: var(--secondary-color);
+        }
+        
+        .rsvp-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .rsvp-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            height: 100px;
+            resize: none;
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .action-container {
+            display: flex;
+            justify-content: center;
+        }
 
-        @media (max-width: 480px) {
-            .invitacion {
-                padding: 30px 15px;
-            }
-            .foto-container {
-                width: 240px;
-                height: 240px;
-            }
-            .foto-circulo {
-                width: 175px;
-                height: 175px;
-                top: 32px;
-                left: 32px;
-            }
-            .nombres {
-                font-size: 3.5rem;
-            }
-            .fecha-hora {
-                font-size: 1.8rem;
-            }
+        .btn-boho {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 36px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-boho:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 16px;
+        }
+
+        .footer .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer .fine-print {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #999;
+            margin-top: 10px;
+        }
+
+        .rsvp-confirmation {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 5px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .rsvp-confirmation.show {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .invitation-card > * {
+            animation: slideUp 0.8s ease-in-out;
+        }
+
+        @media (max-width: 600px) {
+            .title { font-size: 40px; }
+            .name { font-size: 34px; }
+            .and { font-size: 26px; }
+            .names { flex-direction: column; }
+            .invitation-text { padding: 20px; font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Botón interactivo de música ambiental -->
-    <button class="musica-btn" onclick="toggleMusica()" id="btnMusica">
-        🎵 <span id="txtMusica">Reproducir música</span>
-    </button>
-    <audio id="audioBoda" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
-    </audio>
+    <div class="container">
+        <div class="invitation-card">
 
-    <div class="invitacion">
-        
-        <!-- Esquina floral inferior izquierda -->
-        <svg class="decoracion-esquina-izq" viewBox="0 0 100 100">
-            <path d="M10,90 Q30,50 70,80 T90,20" fill="none" stroke="#b89450" stroke-width="2"/>
-            <circle cx="70" cy="80" r="8" fill="#b89450" opacity="0.8"/>
-            <circle cx="50" cy="65" r="5" fill="#3d5e47" opacity="0.8"/>
-        </svg>
-
-        <!-- Esquina floral inferior derecha -->
-        <svg class="decoracion-esquina-der" viewBox="0 0 100 100">
-            <path d="M10,90 Q30,50 70,80 T90,20" fill="none" stroke="#b89450" stroke-width="2"/>
-            <circle cx="70" cy="80" r="8" fill="#b89450" opacity="0.8"/>
-            <circle cx="50" cy="65" r="5" fill="#3d5e47" opacity="0.8"/>
-        </svg>
-
-        <!-- Foto principal con el aro exacto de hojas y ramas doradas -->
-        <div class="foto-container">
-            <!-- Foto de la pareja -->
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Elena y Javier" class="foto-circulo">
-            
-            <!-- Marco SVG detallado idéntico a tu referencia con hojas y círculo dorado -->
-            <svg class="marco-ilustracion" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                <!-- Círculo base dorado principal -->
-                <circle cx="150" cy="150" r="115" stroke="#b89450" stroke-width="3" fill="none"/>
-                <circle cx="150" cy="150" r="122" stroke="#b89450" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
-                
-                <!-- Hojas y ramas superiores derechas -->
-                <g transform="translate(180, 20) rotate(15)">
-                    <path d="M0,40 Q30,10 60,0 Q40,30 0,40" fill="#3d5e47"/>
-                    <path d="M10,50 Q40,20 70,10 Q50,40 10,50" fill="#b89450" opacity="0.85"/>
-                    <path d="M-10,30 Q20,0 50,-10 Q30,20 -10,30" fill="#3d5e47"/>
-                    <circle cx="65" cy="5" r="4" fill="#b89450"/>
-                    <circle cx="55" cy="25" r="3" fill="#b89450"/>
-                </g>
-
-                <!-- Ramas y hojas izquierdas -->
-                <g transform="translate(15, 120) rotate(-30)">
-                    <path d="M0,0 Q30,-20 60,0 Q30,20 0,0" fill="#3d5e47"/>
-                    <path d="M20,20 Q50,0 80,20 Q50,40 20,20" fill="#b89450" opacity="0.9"/>
-                </g>
-
-                <!-- Detalles dorados flotantes superiores -->
-                <circle cx="130" cy="22" r="3" fill="#b89450"/>
-                <circle cx="145" cy="18" r="4" fill="#b89450"/>
-                <circle cx="160" cy="24" r="2.5" fill="#b89450"/>
-            </svg>
-        </div>
-
-        <p class="texto-nuestra-boda">Nuestra Boda</p>
-        <h1 class="nombres">Elena y Javier</h1>
-        <p class="frase-especial">¡No faltes en este día tan especial!</p>
-
-        <div class="fecha-hora-box">
-            <div class="fecha-hora">Julio 10, 2026</div>
-            <div class="hora">20:00 hrs</div>
-        </div>
-
-        <!-- Cuenta regresiva interactiva en vivo -->
-        <div class="cuenta-regresiva" id="countdown">
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="dias">00</div>
-                <div class="tiempo-etiqueta">Días</div>
-            </div>
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="horas">00</div>
-                <div class="tiempo-etiqueta">Horas</div>
-            </div>
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="minutos">00</div>
-                <div class="tiempo-etiqueta">Minutos</div>
-            </div>
-            <div class="tiempo-item">
-                <div class="tiempo-numero" id="segundos">00</div>
-                <div class="tiempo-etiqueta">Segundos</div>
-            </div>
-        </div>
-
-        <!-- Botones interactivos inferiores -->
-        <div class="iconos-container">
-            <a href="https://maps.app.goo.gl/TU_ENLACE_SALON" target="_blank" class="icono-item">
-                <div class="icono-circulo">
-                    <svg class="icono-svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <div class="header">
+                <div class="header-content">
+                    <div class="ornament">✦ &nbsp; NOS CASAMOS &nbsp; ✦</div>
+                    <h1 class="title">¡Nos Casamos!</h1>
+                    <p class="subtitle">Acompáñanos a celebrar nuestro amor</p>
                 </div>
-                <span class="icono-texto">Ubicación</span>
-            </a>
+            </div>
 
-            <a href="https://wa.me/5218330000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Elena%20y%20Javier." target="_blank" class="icono-item">
-                <div class="icono-circulo">
-                    <svg class="icono-svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                </div>
-                <span class="icono-texto">Confirmación de asistencia</span>
-            </a>
+            <div class="names">
+                <span class="name">Ana</span>
+                <span class="and">&amp;</span>
+                <span class="name">Miguel</span>
+            </div>
 
-            <a href="https://maps.app.goo.gl/TU_ENLACE_IGLESIA" target="_blank" class="icono-item">
-                <div class="icono-circulo">
-                    <svg class="icono-svg" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 3.84c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1-2.1-.94-2.1-2.1.94-2.1 2.1-2.1zM16 18H8v-2h8v2z"/></svg>
+            <p class="invitation-text">
+                Con la bendición de Dios y de nuestros padres, tenemos el honor de invitarte a celebrar
+                el día en que uniremos nuestras vidas para siempre. Tu presencia hará este momento
+                aún más especial.
+            </p>
+
+            <div class="details">
+                <div class="detail-box">
+                    <div class="detail-icon"><i class="fa-solid fa-church"></i></div>
+                    <div class="detail-title">Ceremonia</div>
+                    <div class="detail-info">Sábado 14 de noviembre, 2026<br>4:30 p.m.<br>Parroquia San José</div>
                 </div>
-                <span class="icono-texto">Ubicación misa</span>
-            </a>
+                <div class="detail-box">
+                    <div class="detail-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="detail-title">Recepción</div>
+                    <div class="detail-info">A partir de las 7:00 p.m.<br>Salón Jardín Real<br>Av. Hidalgo 1450</div>
+                </div>
+                <div class="detail-box">
+                    <div class="detail-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <div class="detail-title">Vestimenta</div>
+                    <div class="detail-info">Formal / Etiqueta<br><span style="opacity:.7">Evitar blanco y marfil</span></div>
+                </div>
+            </div>
+
+            <div class="countdown">
+                <h2 class="countdown-title">Falta poco para el gran día</h2>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-mins">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-secs">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <h2 class="gallery-title">Nuestros momentos</h2>
+                <div class="gallery-images">
+                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-1/400/400.jpg" alt="Ana y Miguel">
+                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-2/400/400.jpg" alt="Ana y Miguel">
+                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-3/400/400.jpg" alt="Ana y Miguel">
+                </div>
+            </div>
+
+            <div class="rsvp">
+                <h2 class="rsvp-title">Confirma tu asistencia</h2>
+                <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.5;">
+                    Escríbenos por WhatsApp para avisarnos si nos acompañas.
+                </p>
+                <div class="action-container">
+                    <a href="#" class="btn-boho" onclick="pedir();return false;">pedir</a>
+                </div>
+            </div>
+
+            <div class="footer">
+                <span class="signature">Ana &amp; Miguel</span>
+                <p>Gracias por ser parte de nuestra historia.</p>
+                <p class="fine-print">14 · NOVIEMBRE · 2026</p>
+            </div>
+
         </div>
     </div>
 
-    <!-- Script JavaScript para las funciones interactivas -->
     <script>
-        // Cuenta regresiva hacia el 10 de julio de 2026 a las 20:00 hrs
-        const fechaBoda = new Date("July 10, 2026 20:00:00").getTime();
+        // ---------- Cuenta regresiva ----------
+        const weddingDate = new Date("2026-11-14T16:30:00-06:00").getTime();
 
-        function actualizarCuentaRegresiva() {
-            const ahora = new Date().getTime();
-            const diferencia = fechaBoda - ahora;
+        function updateCountdown() {
+            const now = Date.now();
+            let diff = weddingDate - now;
+            if (diff < 0) diff = 0;
 
-            if (diferencia > 0) {
-                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-                const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
 
-                document.getElementById("dias").innerText = String(dias).padStart(2, '0');
-                document.getElementById("horas").innerText = String(horas).padStart(2, '0');
-                document.getElementById("minutos").innerText = String(minutos).padStart(2, '0');
-                document.getElementById("segundos").innerText = String(segundos).padStart(2, '0');
-            }
+            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
         }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
 
-        setInterval(actualizarCuentaRegresiva, 1000);
-        actualizarCuentaRegresiva();
-
-        // Control de música ambiental interactiva
-        const audio = document.getElementById("audioBoda");
-        const txtMusica = document.getElementById("txtMusica");
-        let reproduciendo = false;
-
-        function toggleMusica() {
-            if (reproduciendo) {
-                audio.pause();
-                txtMusica.innerText = "Reproducir música";
-                reproduciendo = false;
-            } else {
-                audio.play();
-                txtMusica.innerText = "Pausar música";
-                reproduciendo = true;
-            }
+        // ---------- RSVP -> WhatsApp ----------
+        function pedir() {
+            const telefono = "5218332555301"; // Mantengo el número solicitado
+            const mensaje = encodeURIComponent("¡Hola! Confirmo mi asistencia a la boda de Ana & Miguel 💛");
+            window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
         }
     </script>
+
 </body>
 </html>
