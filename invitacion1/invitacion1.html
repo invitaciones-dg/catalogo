@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Codificación de caracteres UTF-8 para que acentos y "ñ" se vean bien -->
+    <meta charset="UTF-8">
+    <!-- Hace que la página se adapte al ancho del dispositivo (responsive) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que aparece en la pestaña del navegador -->
+    <title>Invitación de Boda - Ana & Miguel</title>
+
+    <!-- Fuente "Great Vibes" (letra cursiva/caligráfica para los nombres)
+         y "Montserrat" (fuente para el texto normal) desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome: librería de iconos (usamos los de iglesia, copas, camisa, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="invitacion1.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         CONTENIDO PRINCIPAL DE LA PÁGINA
+         Todo va dentro de .container > .invitation-card
+         ============================================================ -->
+    <div class="container">
+        <div class="invitation-card">
+
+            <!-- ===== 1. ENCABEZADO: franja dorada con título y subtítulo ===== -->
+            <div class="header">
+                <div class="header-content">
+                    <div class="ornament">✦ &nbsp; NOS CASAMOS &nbsp; ✦</div>
+                    <h1 class="title">¡Nos Casamos!</h1>
+                    <p class="subtitle">Acompáñanos a celebrar nuestro amor</p>
+                </div>
+            </div>
+
+            <!-- ===== 2. NOMBRES DE LOS NOVIOS ===== -->
+            <div class="names">
+                <span class="name">Ana</span>
+                <span class="and">&amp;</span>
+                <span class="name">Miguel</span>
+            </div>
+
+            <!-- ===== 3. TEXTO DE BIENVENIDA / INVITACIÓN ===== -->
+            <p class="invitation-text">
+                Con la bendición de Dios y de nuestros padres, tenemos el honor de invitarte a celebrar
+                el día en que uniremos nuestras vidas para siempre. Tu presencia hará este momento
+                aún más especial.
+            </p>
+
+            <!-- ===== 4. DETALLES DEL EVENTO: Ceremonia / Recepción / Vestimenta ===== -->
+            <div class="details">
+
+                <!-- Tarjeta: Ceremonia religiosa -->
+                <div class="detail-box">
+                    <div class="detail-icon"><i class="fa-solid fa-church"></i></div>
+                    <div class="detail-title">Ceremonia</div>
+                    <div class="detail-info">Sábado 14 de noviembre, 2026<br>4:30 p.m.<br>Parroquia San José</div>
+                </div>
+
+                <!-- Tarjeta: Recepción / fiesta -->
+                <div class="detail-box">
+                    <div class="detail-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                    <div class="detail-title">Recepción</div>
+                    <div class="detail-info">A partir de las 7:00 p.m.<br>Salón Jardín Real<br>Av. Hidalgo 1450</div>
+                </div>
+
+                <!-- Tarjeta: Código de vestimenta -->
+                <div class="detail-box">
+                    <div class="detail-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <div class="detail-title">Vestimenta</div>
+                    <div class="detail-info">Formal / Etiqueta<br><span style="opacity:.7">Evitar blanco y marfil</span></div>
+                </div>
+
+            </div>
+
+            <!-- ===== 5. CUENTA REGRESIVA (los números se llenan con JS más abajo) ===== -->
+            <div class="countdown">
+                <h2 class="countdown-title">Falta poco para el gran día</h2>
+                <div class="countdown-timer" id="countdownTimer">
+
+                    <!-- Días restantes -->
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+
+                    <!-- Horas restantes -->
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+
+                    <!-- Minutos restantes -->
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-mins">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+
+                    <!-- Segundos restantes -->
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-secs">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== 6. GALERÍA DE FOTOS ===== -->
+            <div class="gallery">
+                <h2 class="gallery-title">Nuestros momentos</h2>
+                <div class="gallery-images">
+                    <!-- Las 3 imágenes son fotos aleatorias de relleno (picsum.photos).
+                         Reemplaza cada "src" por la URL de tus propias fotos. -->
+                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-1/400/400.jpg" alt="Ana y Miguel">
+                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-2/400/400.jpg" alt="Ana y Miguel">
+                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-3/400/400.jpg" alt="Ana y Miguel">
+                </div>
+            </div>
+
+            <!-- ===== 7. CONFIRMACIÓN DE ASISTENCIA (RSVP vía WhatsApp) ===== -->
+            <div class="rsvp">
+                <h2 class="rsvp-title">Confirma tu asistencia</h2>
+                <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.5;">
+                    Escríbenos por WhatsApp para avisarnos si nos acompañas.
+                </p>
+                <!-- Al hacer clic, se ejecuta la función pedir() definida en el <script> -->
+                <div class="action-container">
+                    <a href="#" class="btn-boho" onclick="pedir();return false;">pedir</a>
+                </div>
+            </div>
+
+            <!-- ===== 8. PIE DE PÁGINA ===== -->
+            <div class="footer">
+                <span class="signature">Ana &amp; Miguel</span>
+                <p>Gracias por ser parte de nuestra historia.</p>
+                <p class="fine-print">14 · NOVIEMBRE · 2026</p>
+            </div>
+
+        </div>
+    </div>
+
+ </body>
+</html>

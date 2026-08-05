@@ -1,38 +1,43 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda - Ana & Miguel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+
+        /* ==========================================================
+           VARIABLES CSS (:root)
+           Aquí se definen los colores principales una sola vez.
+           Si luego quieres cambiar la paleta de la invitación,
+           solo necesitas editar estos valores y se actualiza
+           TODO el diseño automáticamente.
+           ========================================================== */
         :root {
-            --primary-color: #d4af37;
-            --secondary-color: #f8f3e9;
-            --text-color: #333;
-            --accent-color: #9c7e31;
-            --light-accent: #f0e6d2;
+            --primary-color: #d4af37;   /* Dorado principal (botones, títulos, números) */
+            --secondary-color: #f8f3e9; /* Beige claro (fondos de secciones) */
+            --text-color: #333;         /* Color de texto general (gris oscuro) */
+            --accent-color: #9c7e31;    /* Dorado oscuro (hover, subtítulos) */
+            --light-accent: #f0e6d2;    /* Beige más claro (fondo de la cuenta regresiva) */
         }
         
+        /* Reset básico: quita márgenes/paddings por defecto del navegador
+           y hace que el "box-sizing" sea más predecible en todos los elementos */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        /* Estilos generales del <body> (toda la página) */
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Fuente base del texto */
             color: var(--text-color);
             background-color: #f9f5f0;
+            /* Imagen de fondo decorativa (foto aleatoria de relleno) */
             background-image: url('https://picsum.photos/seed/wedding-background/1600/1200.jpg');
-            background-size: cover;
-            background-attachment: fixed;
+            background-size: cover;         /* La imagen cubre toda la pantalla */
+            background-attachment: fixed;   /* No se mueve al hacer scroll (efecto parallax) */
             background-position: center;
             position: relative;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita scroll horizontal accidental */
         }
         
+        /* Capa blanca semitransparente ENCIMA del fondo (pero DETRÁS del contenido)
+           para que la foto de fondo no se vea muy fuerte y el texto sea legible */
         body::before {
             content: '';
             position: fixed;
@@ -40,27 +45,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            z-index: -1;
+            background-color: rgba(255, 255, 255, 0.85); /* Blanco al 85% de opacidad */
+            z-index: -1; /* Se manda detrás de todo el contenido */
         }
         
+        /* Contenedor centrado que limita el ancho máximo de la página */
         .container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 0 auto; /* Centra horizontalmente */
             padding: 20px;
         }
         
+        /* Tarjeta blanca principal que contiene toda la invitación */
         .invitation-card {
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor */
+            overflow: hidden; /* Recorta las esquinas de las secciones internas */
             margin: 40px auto;
             position: relative;
             max-width: 800px;
         }
         
+        /* -------- ENCABEZADO (franja dorada superior) -------- */
         .header {
+            /* Degradado de izquierda a derecha entre los dos tonos dorados */
             background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             padding: 30px 20px;
             text-align: center;
@@ -68,6 +77,7 @@
             overflow: hidden;
         }
         
+        /* Patrón floral decorativo semitransparente encima del degradado del header */
         .header::before {
             content: '';
             position: absolute;
@@ -77,31 +87,35 @@
             height: 100%;
             background-image: url('https://picsum.photos/seed/floral-pattern/1200/300.jpg');
             background-size: cover;
-            opacity: 0.2;
+            opacity: 0.2; /* Muy sutil, solo textura */
             z-index: 0;
         }
         
+        /* El texto del header necesita ir POR ENCIMA del patrón decorativo */
         .header-content {
             position: relative;
             z-index: 1;
         }
         
+        /* Línea decorativa pequeña arriba del título ("✦ NOS CASAMOS ✦") */
         .ornament {
             font-size: 24px;
             color: white;
             margin: 15px 0;
-            letter-spacing: 3px;
+            letter-spacing: 3px; /* Espaciado entre letras para efecto elegante */
         }
         
+        /* Título grande en letra cursiva "¡Nos Casamos!" */
         .title {
             font-family: 'Great Vibes', cursive;
             font-size: 60px;
             color: white;
             margin: 10px 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 2s ease-in-out;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sombra para que resalte sobre el dorado */
+            animation: fadeIn 2s ease-in-out; /* Aparece suavemente al cargar */
         }
         
+        /* Subtítulo debajo del título principal */
         .subtitle {
             font-size: 24px;
             color: white;
@@ -110,14 +124,16 @@
             letter-spacing: 2px;
         }
         
+        /* -------- NOMBRES DE LOS NOVIOS (Ana & Miguel) -------- */
         .names {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 30px 0;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* En pantallas pequeñas, si no caben, bajan de línea */
         }
         
+        /* Cada nombre individual (Ana / Miguel) */
         .name {
             font-family: 'Great Vibes', cursive;
             font-size: 48px;
@@ -126,6 +142,7 @@
             position: relative;
         }
         
+        /* El símbolo "&" entre los dos nombres */
         .and {
             font-family: 'Great Vibes', cursive;
             font-size: 36px;
@@ -133,42 +150,48 @@
             margin: 0 10px;
         }
         
+        /* Párrafo de bienvenida / texto de invitación */
         .invitation-text {
             text-align: center;
             padding: 20px 40px;
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.6; /* Espaciado entre líneas para mejor lectura */
         }
         
+        /* -------- SECCIÓN DE DETALLES (Ceremonia / Recepción / Vestimenta) -------- */
         .details {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Las tarjetas se acomodan según el espacio disponible */
             justify-content: space-around;
             padding: 20px;
             background-color: var(--secondary-color);
         }
         
+        /* Cada tarjetita individual dentro de "details" */
         .detail-box {
-            flex: 1 1 300px;
+            flex: 1 1 300px; /* Crece/encoge pero con base de 300px de ancho */
             padding: 20px;
             margin: 10px;
             text-align: center;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease; /* Suaviza el efecto hover */
         }
         
+        /* Efecto: la tarjeta "flota" un poco al pasar el mouse encima */
         .detail-box:hover {
             transform: translateY(-5px);
         }
         
+        /* Icono de Font Awesome dentro de cada tarjeta (iglesia, copas, camisa) */
         .detail-icon {
             font-size: 36px;
             color: var(--primary-color);
             margin-bottom: 15px;
         }
         
+        /* Título de cada tarjeta (ej. "Ceremonia") */
         .detail-title {
             font-size: 20px;
             font-weight: 600;
@@ -176,11 +199,13 @@
             color: var(--accent-color);
         }
         
+        /* Texto con la información (fecha, hora, lugar) */
         .detail-info {
             font-size: 16px;
             line-height: 1.5;
         }
         
+        /* -------- CUENTA REGRESIVA -------- */
         .countdown {
             text-align: center;
             padding: 30px;
@@ -193,13 +218,15 @@
             color: var(--accent-color);
         }
         
+        /* Contenedor de las 4 cajitas: Días / Horas / Minutos / Segundos */
         .countdown-timer {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 15px;       /* Espacio entre cada cajita */
+            flex-wrap: wrap; /* En móvil se acomodan en varias filas si hace falta */
         }
         
+        /* Cada cajita individual del contador */
         .countdown-item {
             background-color: white;
             padding: 15px;
@@ -208,18 +235,21 @@
             min-width: 80px;
         }
         
+        /* El número grande (ej. "14") dentro de cada cajita */
         .countdown-number {
             font-size: 32px;
             font-weight: 600;
             color: var(--primary-color);
-            display: block;
+            display: block; /* Para que quede en su propia línea arriba del texto "Días" */
         }
         
+        /* El texto pequeño debajo del número (ej. "Días") */
         .countdown-label {
             font-size: 14px;
             color: var(--text-color);
         }
         
+        /* -------- GALERÍA DE FOTOS -------- */
         .gallery {
             padding: 30px;
             text-align: center;
@@ -231,6 +261,7 @@
             color: var(--accent-color);
         }
         
+        /* Contenedor de las fotos en fila (se ajustan solas según el ancho) */
         .gallery-images {
             display: flex;
             flex-wrap: wrap;
@@ -238,19 +269,22 @@
             gap: 15px;
         }
         
+        /* Cada foto individual de la galería */
         .gallery-image {
             width: 200px;
             height: 200px;
-            object-fit: cover;
+            object-fit: cover; /* Recorta la imagen para llenar el cuadro sin deformarse */
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
         
+        /* Zoom suave al pasar el mouse sobre una foto */
         .gallery-image:hover {
             transform: scale(1.05);
         }
         
+        /* -------- SECCIÓN DE CONFIRMACIÓN (RSVP) -------- */
         .rsvp {
             padding: 30px;
             text-align: center;
@@ -262,6 +296,11 @@
             margin-bottom: 20px;
             color: var(--accent-color);
         }
+
+        /* NOTA: las clases .rsvp-form / .form-group / .btn de aquí abajo
+           pertenecían al formulario original (nombre, asistencia, etc.).
+           Se dejan definidas por si en el futuro se quiere volver
+           a usar un formulario en vez del botón directo de WhatsApp. */
         
         .rsvp-form {
             max-width: 500px;
@@ -295,9 +334,10 @@
             border-radius: 5px;
             font-size: 16px;
             height: 100px;
-            resize: none;
+            resize: none; /* Evita que el usuario estire el textarea */
         }
         
+        /* Botón genérico (dorado, redondeado) reutilizable en la página */
         .btn {
             background-color: var(--primary-color);
             color: white;
@@ -311,15 +351,18 @@
             margin-top: 10px;
         }
         
+        /* Cambia a dorado oscuro al pasar el mouse */
         .btn:hover {
             background-color: var(--accent-color);
         }
         
+        /* Contenedor que centra el botón de WhatsApp */
         .action-container {
             display: flex;
             justify-content: center;
         }
 
+        /* Botón principal de "Confirmar por WhatsApp" (antes llamado "pedir") */
         .btn-boho {
             display: inline-flex;
             align-items: center;
@@ -333,20 +376,24 @@
             letter-spacing: 1px;
             border-radius: 30px;
             cursor: pointer;
+            /* Transición suave tanto del color como del "levantamiento" al hacer hover */
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
+        /* Al pasar el mouse: cambia de color y se eleva un poco (efecto 3D) */
         .btn-boho:hover {
             background-color: var(--accent-color);
             transform: translateY(-3px);
         }
 
+        /* -------- PIE DE PÁGINA (footer) -------- */
         .footer {
             text-align: center;
             padding: 30px;
             font-size: 16px;
         }
 
+        /* Firma cursiva "Ana & Miguel" dentro del footer */
         .footer .signature {
             font-family: 'Great Vibes', cursive;
             font-size: 32px;
@@ -355,6 +402,7 @@
             display: block;
         }
 
+        /* Texto pequeño con la fecha, al final de todo */
         .footer .fine-print {
             font-size: 12px;
             letter-spacing: 1px;
@@ -362,8 +410,11 @@
             margin-top: 10px;
         }
 
+        /* Caja de confirmación (actualmente no se usa porque el formulario
+           fue reemplazado por el botón directo de WhatsApp, pero se deja
+           el estilo por si se vuelve a necesitar) */
         .rsvp-confirmation {
-            display: none;
+            display: none; /* Oculta por defecto */
             margin-top: 20px;
             padding: 15px;
             background-color: white;
@@ -373,156 +424,42 @@
             font-size: 15px;
         }
 
+        /* Clase que se agregaría con JS para mostrar la confirmación */
         .rsvp-confirmation.show {
             display: block;
             animation: fadeIn 0.6s ease-in-out;
         }
 
+        /* ==========================================================
+           ANIMACIONES (@keyframes)
+           ========================================================== */
+
+        /* Aparición gradual: de invisible a totalmente visible */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
+        /* Aparece deslizándose ligeramente hacia arriba mientras se hace visible */
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Aplica la animación "slideUp" a cada sección directa dentro
+           de la tarjeta de invitación (header, names, details, etc.) */
         .invitation-card > * {
             animation: slideUp 0.8s ease-in-out;
         }
 
+        /* ==========================================================
+           RESPONSIVE: ajustes para pantallas pequeñas (celulares)
+           ========================================================== */
         @media (max-width: 600px) {
-            .title { font-size: 40px; }
-            .name { font-size: 34px; }
-            .and { font-size: 26px; }
-            .names { flex-direction: column; }
+            .title { font-size: 40px; }        /* Título más chico en móvil */
+            .name { font-size: 34px; }         /* Nombres más chicos */
+            .and { font-size: 26px; }          /* Símbolo "&" más chico */
+            .names { flex-direction: column; } /* Nombres apilados verticalmente */
             .invitation-text { padding: 20px; font-size: 16px; }
         }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <div class="invitation-card">
-
-            <div class="header">
-                <div class="header-content">
-                    <div class="ornament">✦ &nbsp; NOS CASAMOS &nbsp; ✦</div>
-                    <h1 class="title">¡Nos Casamos!</h1>
-                    <p class="subtitle">Acompáñanos a celebrar nuestro amor</p>
-                </div>
-            </div>
-
-            <div class="names">
-                <span class="name">Ana</span>
-                <span class="and">&amp;</span>
-                <span class="name">Miguel</span>
-            </div>
-
-            <p class="invitation-text">
-                Con la bendición de Dios y de nuestros padres, tenemos el honor de invitarte a celebrar
-                el día en que uniremos nuestras vidas para siempre. Tu presencia hará este momento
-                aún más especial.
-            </p>
-
-            <div class="details">
-                <div class="detail-box">
-                    <div class="detail-icon"><i class="fa-solid fa-church"></i></div>
-                    <div class="detail-title">Ceremonia</div>
-                    <div class="detail-info">Sábado 14 de noviembre, 2026<br>4:30 p.m.<br>Parroquia San José</div>
-                </div>
-                <div class="detail-box">
-                    <div class="detail-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-                    <div class="detail-title">Recepción</div>
-                    <div class="detail-info">A partir de las 7:00 p.m.<br>Salón Jardín Real<br>Av. Hidalgo 1450</div>
-                </div>
-                <div class="detail-box">
-                    <div class="detail-icon"><i class="fa-solid fa-shirt"></i></div>
-                    <div class="detail-title">Vestimenta</div>
-                    <div class="detail-info">Formal / Etiqueta<br><span style="opacity:.7">Evitar blanco y marfil</span></div>
-                </div>
-            </div>
-
-            <div class="countdown">
-                <h2 class="countdown-title">Falta poco para el gran día</h2>
-                <div class="countdown-timer" id="countdownTimer">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd-days">00</span>
-                        <span class="countdown-label">Días</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd-hours">00</span>
-                        <span class="countdown-label">Horas</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd-mins">00</span>
-                        <span class="countdown-label">Minutos</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="cd-secs">00</span>
-                        <span class="countdown-label">Segundos</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery">
-                <h2 class="gallery-title">Nuestros momentos</h2>
-                <div class="gallery-images">
-                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-1/400/400.jpg" alt="Ana y Miguel">
-                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-2/400/400.jpg" alt="Ana y Miguel">
-                    <img class="gallery-image" src="https://picsum.photos/seed/ana-miguel-3/400/400.jpg" alt="Ana y Miguel">
-                </div>
-            </div>
-
-            <div class="rsvp">
-                <h2 class="rsvp-title">Confirma tu asistencia</h2>
-                <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.5;">
-                    Escríbenos por WhatsApp para avisarnos si nos acompañas.
-                </p>
-                <div class="action-container">
-                    <a href="#" class="btn-boho" onclick="pedir();return false;">pedir</a>
-                </div>
-            </div>
-
-            <div class="footer">
-                <span class="signature">Ana &amp; Miguel</span>
-                <p>Gracias por ser parte de nuestra historia.</p>
-                <p class="fine-print">14 · NOVIEMBRE · 2026</p>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        // ---------- Cuenta regresiva ----------
-        const weddingDate = new Date("2026-11-14T16:30:00-06:00").getTime();
-
-        function updateCountdown() {
-            const now = Date.now();
-            let diff = weddingDate - now;
-            if (diff < 0) diff = 0;
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const mins = Math.floor((diff / (1000 * 60)) % 60);
-            const secs = Math.floor((diff / 1000) % 60);
-
-            document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // ---------- RSVP -> WhatsApp ----------
-        function pedir() {
-            const telefono = "5218332555301"; // Mantengo el número solicitado
-            const mensaje = encodeURIComponent("¡Hola! Confirmo mi asistencia a la boda de Ana & Miguel 💛");
-            window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
-        }
-    </script>
-
-</body>
-</html>
+    
