@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Elena y Javier</title>
+    <link rel="stylesheet" href="invitacion3.css">
+</head>
+<body>
+
+    <!-- Botón interactivo de música ambiental -->
+    <button class="musica-btn" onclick="toggleMusica()" id="btnMusica">
+        🎵 <span id="txtMusica">Reproducir música</span>
+    </button>
+    <audio id="audioBoda" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="invitacion">
+        
+        <!-- Esquina floral inferior izquierda -->
+        <svg class="decoracion-esquina-izq" viewBox="0 0 100 100">
+            <path d="M10,90 Q30,50 70,80 T90,20" fill="none" stroke="#b89450" stroke-width="2"/>
+            <circle cx="70" cy="80" r="8" fill="#b89450" opacity="0.8"/>
+            <circle cx="50" cy="65" r="5" fill="#3d5e47" opacity="0.8"/>
+        </svg>
+
+        <!-- Esquina floral inferior derecha -->
+        <svg class="decoracion-esquina-der" viewBox="0 0 100 100">
+            <path d="M10,90 Q30,50 70,80 T90,20" fill="none" stroke="#b89450" stroke-width="2"/>
+            <circle cx="70" cy="80" r="8" fill="#b89450" opacity="0.8"/>
+            <circle cx="50" cy="65" r="5" fill="#3d5e47" opacity="0.8"/>
+        </svg>
+
+        <!-- Foto principal con el aro exacto de hojas y ramas doradas -->
+        <div class="foto-container">
+            <!-- Foto de la pareja -->
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Elena y Javier" class="foto-circulo">
+            
+            <!-- Marco SVG detallado idéntico a tu referencia con hojas y círculo dorado -->
+            <svg class="marco-ilustracion" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Círculo base dorado principal -->
+                <circle cx="150" cy="150" r="115" stroke="#b89450" stroke-width="3" fill="none"/>
+                <circle cx="150" cy="150" r="122" stroke="#b89450" stroke-width="1" stroke-dasharray="4 4" fill="none"/>
+                
+                <!-- Hojas y ramas superiores derechas -->
+                <g transform="translate(180, 20) rotate(15)">
+                    <path d="M0,40 Q30,10 60,0 Q40,30 0,40" fill="#3d5e47"/>
+                    <path d="M10,50 Q40,20 70,10 Q50,40 10,50" fill="#b89450" opacity="0.85"/>
+                    <path d="M-10,30 Q20,0 50,-10 Q30,20 -10,30" fill="#3d5e47"/>
+                    <circle cx="65" cy="5" r="4" fill="#b89450"/>
+                    <circle cx="55" cy="25" r="3" fill="#b89450"/>
+                </g>
+
+                <!-- Ramas y hojas izquierdas -->
+                <g transform="translate(15, 120) rotate(-30)">
+                    <path d="M0,0 Q30,-20 60,0 Q30,20 0,0" fill="#3d5e47"/>
+                    <path d="M20,20 Q50,0 80,20 Q50,40 20,20" fill="#b89450" opacity="0.9"/>
+                </g>
+
+                <!-- Detalles dorados flotantes superiores -->
+                <circle cx="130" cy="22" r="3" fill="#b89450"/>
+                <circle cx="145" cy="18" r="4" fill="#b89450"/>
+                <circle cx="160" cy="24" r="2.5" fill="#b89450"/>
+            </svg>
+        </div>
+
+        <p class="texto-nuestra-boda">Nuestra Boda</p>
+        <h1 class="nombres">Elena y Javier</h1>
+        <p class="frase-especial">¡No faltes en este día tan especial!</p>
+
+        <div class="fecha-hora-box">
+            <div class="fecha-hora">Julio 10, 2026</div>
+            <div class="hora">20:00 hrs</div>
+        </div>
+
+        <!-- Cuenta regresiva interactiva en vivo -->
+        <div class="cuenta-regresiva" id="countdown">
+            <div class="tiempo-item">
+                <div class="tiempo-numero" id="dias">00</div>
+                <div class="tiempo-etiqueta">Días</div>
+            </div>
+            <div class="tiempo-item">
+                <div class="tiempo-numero" id="horas">00</div>
+                <div class="tiempo-etiqueta">Horas</div>
+            </div>
+            <div class="tiempo-item">
+                <div class="tiempo-numero" id="minutos">00</div>
+                <div class="tiempo-etiqueta">Minutos</div>
+            </div>
+            <div class="tiempo-item">
+                <div class="tiempo-numero" id="segundos">00</div>
+                <div class="tiempo-etiqueta">Segundos</div>
+            </div>
+        </div>
+
+        <!-- Botones interactivos inferiores -->
+        <div class="iconos-container">
+            <a href="https://maps.app.goo.gl/TU_ENLACE_SALON" target="_blank" class="icono-item">
+                <div class="icono-circulo">
+                    <svg class="icono-svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <span class="icono-texto">Ubicación</span>
+            </a>
+
+            <a href="https://wa.me/5218330000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Elena%20y%20Javier." target="_blank" class="icono-item">
+                <div class="icono-circulo">
+                    <svg class="icono-svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+                <span class="icono-texto">Confirmación de asistencia</span>
+            </a>
+
+            <a href="https://maps.app.goo.gl/TU_ENLACE_IGLESIA" target="_blank" class="icono-item">
+                <div class="icono-circulo">
+                    <svg class="icono-svg" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 3.84c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1-2.1-.94-2.1-2.1.94-2.1 2.1-2.1zM16 18H8v-2h8v2z"/></svg>
+                </div>
+                <span class="icono-texto">Ubicación misa</span>
+            </a>
+        </div>
+    </div>
+
+   
+</body>
+<script src="invitacion3.js"></script>
+</html>
